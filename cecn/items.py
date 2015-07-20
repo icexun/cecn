@@ -8,4 +8,8 @@ from scrapy.item import Item, Field
 class CecnItem(Item):
     # define the fields for your item here like:
     # name = Field()
-    pass
+    pdate = Field()
+    author = Field()
+    title = Field()
+    body = Field()
+
