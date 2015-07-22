@@ -1,12 +1,15 @@
+#coding=utf-8
+
 __author__ = 'ice'
+
 
 from scrapy.contrib.spiders import CrawlSpider, Rule
 from scrapy.contrib.linkextractors.sgml import SgmlLinkExtractor
-from scrapy.spider import Spider
-from scrapy.selector import Selector
+from scrapy.selector import HtmlXPathSelector as Selector
 import re
 
 from cecn.items import CecnItem
+
 
 class CecnSpider(CrawlSpider):
    name = "cecn"
@@ -27,8 +30,8 @@ class CecnSpider(CrawlSpider):
        for site in sites:
            item = CecnItem()
            item['pdate'] = re.findall(r'<founder-date>[.]+<]')
-           item['author'] = site.xpath('a/@href').extract()
-           item['title'] = site.xpath('text()').extract()
-           item['body'] =
+           item['author'] = re.findall(r'<founder-author>[.]+<]')
+           item['title'] = re.findall(r'<founder-title>[.]+<]')
+           item['body'] = sel.xpath('//founder-content').text()
            items.append(item)
        return items
