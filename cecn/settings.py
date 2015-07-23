@@ -13,3 +13,6 @@ SPIDER_MODULES = ['cecn.spiders']
 NEWSPIDER_MODULE = 'cecn.spiders'
 USER_AGENT = '%s/%s' % (BOT_NAME, BOT_VERSION)
 
+ITEM_PIPELINES = {
+    'cecn.pipelines.CecnPipeline': 1000,
+}
