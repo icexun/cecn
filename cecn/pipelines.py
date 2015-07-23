@@ -14,11 +14,12 @@ class CecnPipeline(object):
     self.cursor = self.conn.cursor()
 
   def process_item(self, item, spider):
-    print item['body']
+    #print item['body']
     try:
+        #self.cursor.execute("TRUNCATE TABLE paper ")
         self.cursor.execute("""INSERT INTO paper (pdate, author, title, body)
                         VALUES (%s, %s, %s, %s)""",
-                       (item['pdate'].encode('utf-8'),
+                       (item['pdate'],
                         item['author'].encode('utf-8'),
                         item['title'].encode('utf-8'),
                         item['body'].encode('utf-8')))
