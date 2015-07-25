@@ -11,5 +11,6 @@ class CecnItem(Item):
     pdate = Field()
     author = Field()
     title = Field()
+    subtitle = Field()
     body = Field()
 

@@ -11,7 +11,6 @@ import re
 import datetime
 
 
-
 from cecn.items import CecnItem
 
 global crawl_days, url_list
@@ -44,8 +43,9 @@ class CecnSpider(CrawlSpider):
    print url_list
    start_urls = gen_start_urls()
 
+   #debug
    #start_urls = [
-   #    "http://paper.ce.cn/jjrb/html/2015-07/20/node_2.htm"
+   #    "http://paper.ce.cn/jjrb/html/2015-07/06/node_2.htm"
    #]
 
    rules = (
@@ -73,11 +73,10 @@ class CecnSpider(CrawlSpider):
            if (c != None):
                 item['title'] = c.group(1)
                 #print item['title']
-           #item['pdate'] = comment.select('//founder-date/text()')
-           #item['author'] = comment.select('//founder-author/text()')
-           #item['title'] = comment.select('//founder-title/text()')
-           #item['body'] = sel.select('//founder-content/text()')
-           #items.append(item)
+           c = re.search(r'<founder-subtitle>(.*)</founder-subtitle>', comment)
+           if (c != None):
+                item['subtitle'] = c.group(1)
+
        item['body'] = "\n".join(sel.select('//founder-content/p/text()').extract())
        items.append(item)
        return items

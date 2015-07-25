@@ -17,11 +17,12 @@ class CecnPipeline(object):
     #print item['body']
     try:
         #self.cursor.execute("TRUNCATE TABLE paper ")
-        self.cursor.execute("""INSERT INTO paper (pdate, author, title, body)
-                        VALUES (%s, %s, %s, %s)""",
+        self.cursor.execute("""INSERT INTO paper (pdate, author, title, subtitle, body)
+                        VALUES (%s, %s, %s, %s, %s)""",
                        (item['pdate'],
                         item['author'].encode('utf-8'),
                         item['title'].encode('utf-8'),
+                        item['subtitle'].encode('utf-8'),
                         item['body'].encode('utf-8')))
 
         self.conn.commit()
