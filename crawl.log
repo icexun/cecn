@@ -1,0 +1,21 @@
+2015-07-23 23:18:40+0800 [cecn] INFO: Closing spider (finished)
+2015-07-23 23:18:40+0800 [cecn] INFO: Dumping spider stats:
+	{'downloader/exception_count': 254,
+	 'downloader/exception_type_count/twisted.internet.defer.TimeoutError': 254,
+	 'downloader/request_bytes': 43532099,
+	 'downloader/request_count': 150316,
+	 'downloader/request_method_count/GET': 150316,
+	 'downloader/response_bytes': 4269539544L,
+	 'downloader/response_count': 150062,
+	 'downloader/response_status_count/200': 150061,
+	 'downloader/response_status_count/404': 1,
+	 'finish_reason': 'finished',
+	 'finish_time': datetime.datetime(2015, 7, 23, 15, 18, 40, 223304),
+	 'item_scraped_count': 128338,
+	 'request_depth_max': 2,
+	 'scheduler/memory_enqueued': 150316,
+	 'start_time': datetime.datetime(2015, 7, 23, 12, 49, 51, 300387)}
+2015-07-23 23:18:40+0800 [cecn] INFO: Spider closed (finished)
+2015-07-23 23:18:40+0800 [scrapy] INFO: Dumping global stats:
+	{'memusage/max': 125616128, 'memusage/startup': 47960064}
+

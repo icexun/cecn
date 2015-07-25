@@ -10,15 +10,13 @@ from scrapy.selector import HtmlXPathSelector
 import re
 import datetime
 
-
-
 from cecn.items import CecnItem
 
 global crawl_days, url_list
 crawl_days = 1500
 url_list = []
 
-
+#no good way to crawl every days node html link, so generate for days want to collect
 def gen_start_urls():
     dt = datetime.datetime.now()
 
@@ -42,11 +40,11 @@ class CecnSpider(CrawlSpider):
    allowed_domains = ["paper.ce.cn"]
 
    print url_list
-   start_urls = gen_start_urls()
+   #start_urls = gen_start_urls()
 
-   #start_urls = [
-   #    "http://paper.ce.cn/jjrb/html/2015-07/20/node_2.htm"
-   #]
+   start_urls = [
+       "http://paper.ce.cn/jjrb/html/2015-07/20/node_2.htm"
+   ]
 
    rules = (
        Rule(SgmlLinkExtractor(allow=('node_', ))),
@@ -72,12 +70,10 @@ class CecnSpider(CrawlSpider):
            c = re.search(r'<founder-title>(.*)</founder-title>', comment)
            if (c != None):
                 item['title'] = c.group(1)
-                #print item['title']
-           #item['pdate'] = comment.select('//founder-date/text()')
-           #item['author'] = comment.select('//founder-author/text()')
-           #item['title'] = comment.select('//founder-title/text()')
-           #item['body'] = sel.select('//founder-content/text()')
-           #items.append(item)
+           c = re.search(r'<founder-subtitle>(.*)</founder-subtitle>', comment)
+           if (c != None):
+                item['subtitle'] = c.group(1)
+                print item['subtitle']
        item['body'] = "\n".join(sel.select('//founder-content/p/text()').extract())
        items.append(item)
        return items
