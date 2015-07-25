@@ -7,5 +7,5 @@
 mysql中字段一次为id, pdate(出版日期)，author, title, subtitle, body(文章正文)
 
 ###爬完之后的查询一种方法
-比如要查署名为谷夏的所有稿件
+####比如要查署名为 谷夏 的所有稿件
 SELECT * FROM cecn.paper where ((body like '%谷夏%') or (body like '%谷 夏%') or (author like '%谷夏%') or (author like '%谷 夏%') or (subtitle like '%谷夏%') or (subtitle like '%谷 夏%'));
