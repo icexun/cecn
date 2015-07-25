@@ -10,6 +10,10 @@ from scrapy.selector import HtmlXPathSelector
 import re
 import datetime
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> bugfix
 from cecn.items import CecnItem
 
 global crawl_days, url_list
@@ -42,9 +46,16 @@ class CecnSpider(CrawlSpider):
    print url_list
    #start_urls = gen_start_urls()
 
+<<<<<<< HEAD
    start_urls = [
        "http://paper.ce.cn/jjrb/html/2015-07/20/node_2.htm"
    ]
+=======
+   #debug
+   #start_urls = [
+   #    "http://paper.ce.cn/jjrb/html/2015-07/06/node_2.htm"
+   #]
+>>>>>>> bugfix
 
    rules = (
        Rule(SgmlLinkExtractor(allow=('node_', ))),
@@ -70,10 +81,18 @@ class CecnSpider(CrawlSpider):
            c = re.search(r'<founder-title>(.*)</founder-title>', comment)
            if (c != None):
                 item['title'] = c.group(1)
+<<<<<<< HEAD
            c = re.search(r'<founder-subtitle>(.*)</founder-subtitle>', comment)
            if (c != None):
                 item['subtitle'] = c.group(1)
                 print item['subtitle']
+=======
+                #print item['title']
+           c = re.search(r'<founder-subtitle>(.*)</founder-subtitle>', comment)
+           if (c != None):
+                item['subtitle'] = c.group(1)
+
+>>>>>>> bugfix
        item['body'] = "\n".join(sel.select('//founder-content/p/text()').extract())
        items.append(item)
        return items
