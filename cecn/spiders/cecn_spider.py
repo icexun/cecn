@@ -41,18 +41,12 @@ class CecnSpider(CrawlSpider):
    allowed_domains = ["paper.ce.cn"]
 
    print url_list
-   #start_urls = gen_start_urls()
-
-
-   start_urls = [
-       "http://paper.ce.cn/jjrb/html/2015-07/20/node_2.htm"
-   ]
+   start_urls = gen_start_urls()
 
    #debug
    #start_urls = [
-   #    "http://paper.ce.cn/jjrb/html/2015-07/06/node_2.htm"
+   #    "http://paper.ce.cn/jjrb/html/2015-07/20/node_2.htm"
    #]
-
 
    rules = (
        Rule(SgmlLinkExtractor(allow=('node_', ))),
@@ -78,18 +72,10 @@ class CecnSpider(CrawlSpider):
            c = re.search(r'<founder-title>(.*)</founder-title>', comment)
            if (c != None):
                 item['title'] = c.group(1)
-
            c = re.search(r'<founder-subtitle>(.*)</founder-subtitle>', comment)
            if (c != None):
                 item['subtitle'] = c.group(1)
                 print item['subtitle']
-
-                #print item['title']
-           c = re.search(r'<founder-subtitle>(.*)</founder-subtitle>', comment)
-           if (c != None):
-                item['subtitle'] = c.group(1)
-
-
        item['body'] = "\n".join(sel.select('//founder-content/p/text()').extract())
        items.append(item)
        return items

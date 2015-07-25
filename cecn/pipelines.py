@@ -18,11 +18,7 @@ class CecnPipeline(object):
     try:
         #self.cursor.execute("TRUNCATE TABLE paper ")
         self.cursor.execute("""INSERT INTO paper (pdate, author, title, subtitle, body)
-<<<<<<< HEAD
-                        VALUES (%s, %s, %s, %s)""",
-=======
                         VALUES (%s, %s, %s, %s, %s)""",
->>>>>>> bugfix
                        (item['pdate'],
                         item['author'].encode('utf-8'),
                         item['title'].encode('utf-8'),
