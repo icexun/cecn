@@ -14,7 +14,11 @@ import datetime
 from cecn.items import CecnItem
 
 global crawl_days, url_list
-crawl_days = 1500
+
+last_dt = datetime.date(2015, 10, 31)
+today_dt = datetime.date.today()
+
+crawl_days = (today_dt - last_dt).days
 url_list = []
 
 #no good way to crawl every days node html link, so generate for days want to collect
